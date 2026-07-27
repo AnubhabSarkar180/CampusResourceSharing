@@ -4,7 +4,15 @@ const Product = require("../models/products.js");
 
 router.post("/",async(req,res) => {
         try{
-            const newProduct = new Product(req.body);
+         const {name, price, description, category} = req.body;
+            const newProduct = new Product(
+               {
+                  name,
+                  price,
+                  description,
+                  category
+               }
+            );
             const savedProduct = await newProduct.save();
 
             res.status(200).json(savedProduct);
@@ -20,6 +28,7 @@ router.get("/", async(req,res) => {
         res.status(200).json(products);
       }catch(err)
       {
+         console.error("Error fetching products:", err);
          res.status(500).json({success: false, message: "Failed to fetch products", error: err.message});
       }
 });
