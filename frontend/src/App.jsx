@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import AddProductForm from './AddProductForm';
+import NavBar from './components/Navbar';
 import './App.css'
 
 function App() {
@@ -31,30 +32,32 @@ function App() {
  const handleProductAdded = (newProduct) => {
   setProducts((prevProducts) => [newProduct, ...prevProducts]);
  }
- if (loading) return <div><h2>Loading...</h2></div>;
- if (error) return <div><h2>Error: {error}</h2></div>;
+ //if (loading) return <div><h2>Loading...</h2></div>;
+ //if (error) return <div><h2>Error: {error}</h2></div>;
 
  return(
   <div>
-    <h1>
-      Campus Resource Portal
-    </h1>
+    <NavBar listingCount={products.length}/>
     <AddProductForm onProductAdded={handleProductAdded} />
-    {products.length === 0 ? (<h2>
-      No Products Found
-    </h2>): (
-        <div>
-          {products.map(product => (
-            <div>
-              <h3>{product.title || product.name}</h3>
-              <p>
-                <strong>Price:</strong> ₹{product.price}
-              </p>
-              <p>Product Description: {product.description}</p>
-              {product.category && <small>Category: {product.category}</small>}
-             </div>
-          ))}
-
+    {loading && (
+      <div><h2>Loading...</h2></div>
+    )}
+    {error && (
+      <div><h2>Error: {error}</h2></div>
+    )}
+    {!loading && !error && products.length ===0 && (
+      <div><h2>No products available.</h2></div>
+    )}
+    {!loading && !error && products.length > 0 && (
+      <div>
+        {products.map(product => (
+          <div key={product._id}>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <p>Price: ${product.price}</p>
+            <p>Category: ${product.category}</p>
+          </div>
+        ))}
         </div>
     )}
   </div>
