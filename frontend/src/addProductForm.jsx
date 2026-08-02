@@ -49,29 +49,31 @@ const handleSubmit = async (e) => {
 };
 
 return(
-    <div>
-        <h2>
+    <div >
+        <div className="border-4 border-red-500 border-solid text-center max-w-lg mx-auto">
+        <h2 className="text-lg font-semibold mb-2 text-center">
             Post a New Campus Resource
         </h2>
         {formError && <div style={{color: 'red'}}>Error: {formError}</div>}
 
         <form onSubmit={handleSubmit}>
             <div>
-                <label>
-                    Product Name:
+                <label className= "font-medium text-gray-700">
+                    Product Name: 
                 </label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required /> <br></br>
-                <label>Product Price (₹):</label>
-                <input type="text" name="price" value={formData.price} onChange={handleChange} required /><br></br>
-                <label>Product Description:</label>
-                <input type="text" name="description" value={formData.description} onChange={handleChange} /><br></br>
-                <label>Category:</label>
-                <input type="text" name="category" value={formData.category} onChange={handleChange} required />
+                <input className="border-2 border-slate-700 rounded  px-4" type="text" name="name" value={formData.name} onChange={handleChange} required /> <br></br>
+                <label className="font-medium text-gray-700">Product Price (₹): </label>
+                <input className="border-2 border-slate-700 rounded  px-4" type="text" name="price" value={formData.price} onChange={handleChange} required /><br></br>
+                <label className="font-medium text-gray-700">Product Description:</label>
+                <input className="border-2 border-slate-700 rounded  px-4" type="text" name="description" value={formData.description} onChange={handleChange} /><br></br>
+                <label className="font-medium text-gray-800">Category:</label>
+                <input className="border-2 border-slate-700 rounded  px-4" type="text" name="category" value={formData.category} onChange={handleChange} required />
             </div>
-            <button type="submit" disabled={submitting}>
+            <button className="font-medium text-gray-800 text-white p-2 m-4 rounded-lg bg-indigo-500 " type="submit" disabled={submitting}>
                 {submitting ? "Adding..." : "Add Product"}
             </button>
         </form>
+        </div>
     </div>
 );
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import AddProductForm from './AddProductForm';
 import NavBar from './components/Navbar';
-import './App.css'
+// import './App.css'
 
 function App() {
  const [products, setProducts] = useState([]);
@@ -36,7 +36,7 @@ function App() {
  //if (error) return <div><h2>Error: {error}</h2></div>;
 
  return(
-  <div>
+  <div className="min-h-screen bg-slate-50 text-slate-900">
     <NavBar listingCount={products.length}/>
     <AddProductForm onProductAdded={handleProductAdded} />
     {loading && (
@@ -54,7 +54,7 @@ function App() {
           <div key={product._id}>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
-            <p>Price: ${product.price}</p>
+            <p>Pric: ${product.price}</p>
             <p>Category: ${product.category}</p>
           </div>
         ))}
