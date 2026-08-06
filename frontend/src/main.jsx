@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import Searchbar from './components/Searchbar.jsx'
+import Category from './components/Category.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

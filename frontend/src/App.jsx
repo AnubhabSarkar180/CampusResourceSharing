@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import AddProductForm from './AddProductForm';
 import NavBar from './components/Navbar';
+import Searchbar from './components/Searchbar';
+import Category from './components/Category';
 // import './App.css'
 
 function App() {
@@ -36,9 +38,14 @@ function App() {
  //if (error) return <div><h2>Error: {error}</h2></div>;
 
  return(
-  <div className="min-h-screen bg-slate-50 text-slate-900">
+  <div className="min-h-screen bg-slate-50 text-slate-900 ">
     <NavBar listingCount={products.length}/>
+     <Searchbar />
+      <Category />
     <AddProductForm onProductAdded={handleProductAdded} />
+    <div className="text-center mt-5">
+      <h2 className="text-lg font-semibold mb-2 text-center">Available Products</h2>
+    </div>  
     {loading && (
       <div><h2>Loading...</h2></div>
     )}

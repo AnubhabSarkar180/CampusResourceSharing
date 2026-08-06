@@ -50,7 +50,7 @@ const handleSubmit = async (e) => {
 
 return(
     <div >
-        <div className="border-4 border-red-500 border-solid text-center max-w-lg mx-auto">
+        <div className=" text-center max-w-lg mx-auto mt-5 p-2 border border-slate-200 rounded-xl hover:shadow-sm transition-shadow duration-300ms cursor-pointer bg-white">
         <h2 className="text-lg font-semibold mb-2 text-center">
             Post a New Campus Resource
         </h2>
@@ -58,18 +58,18 @@ return(
 
         <form onSubmit={handleSubmit}>
             <div>
-                <label className= "font-medium text-gray-700">
+                <label className= "font-medium text-gray-700 p-1.5">
                     Product Name: 
                 </label>
                 <input className="border-2 border-slate-700 rounded  px-4" type="text" name="name" value={formData.name} onChange={handleChange} required /> <br></br>
-                <label className="font-medium text-gray-700">Product Price (₹): </label>
+                <label className="font-medium text-gray-700 p-1.5">Product Price (₹): </label>
                 <input className="border-2 border-slate-700 rounded  px-4" type="text" name="price" value={formData.price} onChange={handleChange} required /><br></br>
-                <label className="font-medium text-gray-700">Product Description:</label>
+                <label className="font-medium text-gray-700 p-1.5">Product Description:</label>
                 <input className="border-2 border-slate-700 rounded  px-4" type="text" name="description" value={formData.description} onChange={handleChange} /><br></br>
-                <label className="font-medium text-gray-800">Category:</label>
+                <label className="font-medium text-gray-800 p-1.5">Category:</label>
                 <input className="border-2 border-slate-700 rounded  px-4" type="text" name="category" value={formData.category} onChange={handleChange} required />
             </div>
-            <button className="font-medium text-gray-800 text-white p-2 m-4 rounded-lg bg-indigo-500 " type="submit" disabled={submitting}>
+            <button className="font-medium  text-white p-2 m-4 rounded-lg bg-indigo-500 hover:shadow-md hover:brightness-110 hover:cursor-pointer" type="submit" disabled={submitting}>
                 {submitting ? "Adding..." : "Add Product"}
             </button>
         </form>

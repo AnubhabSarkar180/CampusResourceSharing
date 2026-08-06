@@ -31,12 +31,12 @@ function Searchbar() {
             type="text"
             name="search"
             placeholder="Search for drafters, lab coats, components,..."
-            className="border border-r-0 border-double border-slate-400 min-w-lg p-2 pl-10 bg-grey-200 rounded-l-full outline-none shadow-md transition-all duration-200 hover:shadow-md focus:border-indigo-400 focus:shadow-lg focus:shadow-blue-500/20"
+            className="border border-r-0 border-double hover:cursor-pointer border-slate-400 min-w-lg p-2 pl-10 bg-grey-200 rounded-l-full outline-none shadow-md transition-all duration-200 hover:shadow-md focus:border-indigo-400 focus:shadow-lg focus:shadow-blue-500/20"
           />
         </div>
         <button
           type="submit"
-          className="bg-indigo-500 text-sm text-white border border-double border-slate-400 p-2.5 rounded-r-full font-small shrink-0 shadow-md  focus:border-indigo-400 focus:border-3  transistion-all duration-100 hover:shadow-lg hover:shadow-blue-500/20 "
+          className="bg-indigo-500 text-sm text-white border border-double border-slate-400 p-2.5 rounded-r-full font-small shrink-0 shadow-md hover:cursor-pointer focus:border-indigo-400 hover:brightness-110 focus:border-3  transistion-all duration-100 hover:shadow-lg hover:shadow-blue-500/20 "
         >
           Search
         </button>
