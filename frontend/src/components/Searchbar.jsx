@@ -1,7 +1,7 @@
 function Searchbar() {
   return (
     <div className="roboto">
-      <div className=" text-center bg-white mt-4 max-w-4xl w-full items-center mx-auto p-5 rounded-lg shadow-custom border border-double max-h-full border-slate-400">
+      <div className=" text-center bg-white mt-4 max-w-4xl w-full items-center mx-auto p-5 rounded-lg shadow-custom border border-double max-h-full border-slate-300">
         <h1 className="text-4xl font-semibold pt-3 pb-1">
           YOUR CAMPUS. YOUR GEAR.
         </h1>
@@ -36,7 +36,7 @@ function Searchbar() {
         </div>
         <button
           type="submit"
-          className="bg-indigo-500 text-sm text-white border border-double border-slate-400 p-2.5 rounded-r-full font-small shrink-0 shadow-md hover:cursor-pointer focus:border-indigo-400 hover:brightness-110 focus:border-3  transistion-all duration-100 hover:shadow-lg hover:shadow-blue-500/20 "
+          className="bg-indigo-500 text-sm text-white border border-double border-slate-400 p-2.5 rounded-r-full font-small shrink-0 shadow-md hover:cursor-pointer focus:border-indigo-400 hover:brightness-110 focus:border-3  transistion-all duration-100 hover:shadow-lg hover:shadow-indigo-500/20 "
         >
           Search
         </button>
