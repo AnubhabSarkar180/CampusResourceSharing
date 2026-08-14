@@ -1,84 +1,115 @@
-import { useState, useEffect } from 'react'
-import AddProductForm from './AddProductForm';
-import NavBar from './components/Navbar';
-import Searchbar from './components/Searchbar';
-import Category from './components/Category';
-import ItemCards from './components/ItemCards';
+import { useState, useEffect } from "react";
+import AddProductForm from "./AddProductForm";
+import NavBar from "./components/Navbar";
+import Searchbar from "./components/Searchbar";
+import Category from "./components/Category";
+import ItemCards from "./components/ItemCards";
 // import './App.css'
 
 function App() {
- const [products, setProducts] = useState([]);
- const [loading, setLoading] = useState(true);
- const [error, setError] = useState(null);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
- useEffect(() => {
-  async function fetchProducts(){
-    try{
-      const response = await fetch('http://localhost:3000/api/products');
-      if(!response.ok)
-      {
-        throw new Error(`HTTP error! status: ${response.status}`);
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch("http://localhost:3000/api/products");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setProducts(data);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setError(err.message);
+        setLoading(false);
       }
-      const data = await response.json();
-      setProducts(data);
-      setLoading(false);
-    }catch(err){
-    console.error("Error fetching products:", err);
-    setError(err.message);
-    setLoading(false);
-    
-  }
-  }
- fetchProducts();
- }, []);
+    }
+    fetchProducts();
+  }, []);
 
- const handleProductAdded = (newProduct) => {
-  setProducts((prevProducts) => [newProduct, ...prevProducts]);
- }
- //if (loading) return <div><h2>Loading...</h2></div>;
- //if (error) return <div><h2>Error: {error}</h2></div>;
+  const handleProductAdded = (newProduct) => {
+    setProducts((prevProducts) => [newProduct, ...prevProducts]);
+  };
+  //if (loading) return <div><h2>Loading...</h2></div>;
+  //if (error) return <div><h2>Error: {error}</h2></div>;
 
- return(
-  <div className="min-h-screen bg-slate-50 text-slate-900 roboto ">
-    <NavBar/>
-     <Searchbar />
-     <h1 className="text-4xl font-semibold text-left m-4 p-3">Browse By Category</h1>
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 roboto ">
+      <NavBar />
+      <Searchbar />
+      <h1 className="text-4xl font-semibold text-left m-4 p-3">
+        Browse By Category
+      </h1>
       <Category />
-      <h1 className="text-4xl font-semibold text-left m-4 p-3">Recently Shared</h1>
+      <h1 className="text-4xl font-semibold text-left m-4 p-3">
+        Recently Shared
+      </h1>
       <div className="flex justify-around pb-3">
-      <ItemCards />
-      <ItemCards />
-      <ItemCards />
-      <ItemCards />
+        <ItemCards />
+        <ItemCards />
+        <ItemCards />
+        <ItemCards />
       </div>
-    <AddProductForm onProductAdded={handleProductAdded} />
-    <div className="text-center mt-5">
-      <h2 className="text-lg font-semibold mb-2 text-center">Available Products</h2>
-    </div>  
-    {loading && (
-      <div><h2>Loading...</h2></div>
-    )}
-    {error && (
-      <div><h2>Error: {error}</h2></div>
-    )}
-    {!loading && !error && products.length ===0 && (
-      <div><h2>No products available.</h2></div>
-    )}
-    {!loading && !error && products.length > 0 && (
-      <div>
-        {products.map(product => (
-          <div key={product._id}>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <p>Pric: ${product.price}</p>
-            <p>Category: ${product.category}</p>
-          </div>
-        ))}
+      <AddProductForm onProductAdded={handleProductAdded} />
+      <div className="text-center mt-5">
+        <h2 className="text-lg font-semibold mb-2 text-center">
+          Available Products
+        </h2>
+      </div>
+      {loading && (
+        <div>
+          <h2>Loading...</h2>
         </div>
-    )}
-  </div>
- );
-  
+      )}
+      {error && (
+        <div>
+          <h2>Error: {error}</h2>
+        </div>
+      )}
+      {!loading && !error && products.length === 0 && (
+        <div>
+          <h2>No products available.</h2>
+        </div>
+      )}
+      {!loading && !error && products.length > 0 && (
+        <div>
+          {products.map((product) => (
+            <div key={product._id}>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <p>Pric: ${product.price}</p>
+              <p>Category: ${product.category}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      <div className="flex flex-col items-center bg-indigo-700 text-white p-10 mt-5 w-full max-w-7xl mx-auto px-4 my-16 rounded-xl shadow-custom">
+        <div className="flex flex-col items-center gap-3 p-15 px-30">
+          <h1 className="font-bold p-3 tracking-tight md:text-4xl">Got gear gathering dust?</h1>
+          <p className="text-lg text-[#A9ABAD] leading-relaxed text-center p-1.5">
+            Help a junior out! List your unused drafters, textbooks, and lab <br/>
+            equipment in seconds and get paid or share the knowledge.
+          </p>
+          <button className="bg-white text-indigo-700 py-3 rounded-xl font-semibold px-8 transition:all duration-300 hover:scale-110 ">Start Listing Now</button>
+        </div>
+      </div>
+      <div className="flex flex-col items-center p-12 border-t border-slate-200 ">
+        <h1 className="font-extrabold text-lg p-2 mb-2">
+          Campus Sharing Portal
+        </h1>
+        <div className="flex gap-3 justify-around text-[#A9ABAD] mb-2 text-sm ">
+          <span className="hover:text-indigo-500">Privacy Policy</span>
+          <span className="hover:text-indigo-500">Terms of Service</span>
+          <span className="hover:text-indigo-500">About Us</span>
+          <span className="hover:text-indigo-500">Support</span>
+        </div>
+        <span className="pt-5 text-sm text-[#A9ABAD]">© 2026 Campus Sharing Portal. All rights reserved.</span>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
