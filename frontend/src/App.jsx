@@ -10,6 +10,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState(" ");
 
   useEffect(() => {
     async function fetchProducts() {
@@ -33,6 +34,7 @@ function App() {
   const handleProductAdded = (newProduct) => {
     setProducts((prevProducts) => [newProduct, ...prevProducts]);
   };
+
   //if (loading) return <div><h2>Loading...</h2></div>;
   //if (error) return <div><h2>Error: {error}</h2></div>;
 
